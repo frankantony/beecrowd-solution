@@ -42,7 +42,7 @@ while True:
 			valorB = f[B]
 		else:
 			valorB = fib2(B)
-		resultado += (valorA * f[B])
+		resultado += (valorA * f[B])  % 1000000007;
 		A = A+1
 		B = B+1
 	
