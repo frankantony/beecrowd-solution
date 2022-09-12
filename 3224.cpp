@@ -3,25 +3,20 @@
 
 using namespace std;
 
-bool verifica (char* a, char* b) {
+bool verifica (char *a, char* b) {
 	int tam_a = strlen(a), tam_b = strlen(b);
-	
+	if (tam_a >= tam_b) return true;
+	return false;
 }
 
 int main() {
-	char entrada[20];
-	scanf(" %[^\n]", entrada);
-	bool encontrou = false;
-	for (int i = 0;i < strlen(entrada)-1; i++) {
-		if (entrada[i] == '1' && entrada[i+1] == '3') {
-			encontrou = true;
-			break;
-		}
-	}
-	if (encontrou)
-		printf("%s es de Mala Suerte\n", entrada);
+	char entrada1[1001], entrada2[1001];
+	scanf(" %[^\n]", entrada1);
+	scanf(" %[^\n]", entrada2);
+	if (verifica(entrada1, entrada2))
+		printf("go\n");
 	else
-		printf("%s NO es de Mala Suerte\n", entrada);
+		printf("no\n");
+
     return 0;
 }
-
