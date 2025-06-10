@@ -1,17 +1,17 @@
-#include<cstdio>
-#include<cstring>
+#include<iostream>
+#include<string>
 #include<algorithm>
 
 using namespace std;
 
 int main() {
-	char entrada[1024*1024];
+	string entrada;
 	int N;
-	scanf("%d",&N);
+	cin >> N;
 	while(N) {
-		scanf(" %[^\n]", entrada);
-		int tam = strlen(entrada);
-		sort(entrada,entrada+tam);
+		cin >> entrada;
+		int tam = entrada.size();
+		sort(entrada.begin(),entrada.end());
 		int i = 0;
 		while (i < tam && entrada[i] =='0')
 			i++;
@@ -20,7 +20,7 @@ int main() {
 			entrada[0] = entrada[i];
 			entrada[i] = aux;
 		}
-		printf("%s\n",entrada);
+		cout << entrada << endl;
 		N--;
 	}
     return 0;

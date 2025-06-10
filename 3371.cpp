@@ -4,13 +4,11 @@
 using namespace std;
 
 struct Tarefa {
-	int D, pos;
+	int T, D, pos;
 };
 
 int cmp (Tarefa x, Tarefa y) {
-	if (x.D < y.D) return 1;
-	else if (x.D == y.D) return x.pos < y.pos;
-	return 0;
+	return x.D < y.D;
 }
 
 int main() {
@@ -18,9 +16,9 @@ int main() {
 	scanf("%d",&N);
 	Tarefa tarefas[N];
 	for (int i = 0; i < N; i++) {
-		scanf("%d%d",&T, &tarefas[i].D);
+		scanf("%d%d",&tarefas[i].T, &tarefas[i].D);
 		tarefas[i].pos = i+1;
-		soma += T;
+		soma += tarefas[i].T;
 		if (maximo < tarefas[i].D)
 			maximo = tarefas[i].D;
 	}
