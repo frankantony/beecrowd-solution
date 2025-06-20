@@ -1,40 +1,35 @@
-#include<cstdio>
+#include<iostream>
 
 using namespace std;
 
 int main() {
 	int N;
-	while(1) {
-		scanf("%d",&N);
-		if(N == 0)
+	while (true) {
+		cin >> N;
+		if (N == 0)
 			break;
-		int  vet[N];
-		for (int i = 0;i < N;i++)
-			scanf("%d",&vet[i]);
-		int cont = 0;
-/*		if (vet[0] == 0 && vet[1] == 0) {
-			if (vet[N-1] == 0)
-				vet[0] = 1;
-			else
-				vet[1] = 1;
-			cont++;
-		}
-*/
-		for (int i = 0;i < N-1;i++) {
-			if (vet[i] == 0 && vet[i+1] == 0) {
-				cont++;
-//				if (vet[(i+2)%N] == 0)
-					vet[i+1] = 1;
-//				else
-//					vet[i] = 1;
+		
+		int  X[N];
+		for (int i = 0; i < N; i++)
+			cin >> X[i];
+		
+		int firstConcretPost = 0;
+		while (firstConcretPost < N && X[firstConcretPost] == 0)
+			firstConcretPost++;
+
+		int c = 0, result = 0;
+		for (int i = firstConcretPost; i < N; i++) {
+			if (X[i] == 0)
+				c++;
+			else {
+				result += (c / 2);
+				c = 0;
 			}
 		}
-/*		if (vet[N-1] == 0 && vet[0] == 0) {
-			cont++;
-			vet[0] = 1;
-		}
-*/
-		printf("%d\n",cont);
+		
+		result += (firstConcretPost + c) / 2 + (firstConcretPost == N && N % 2 != 0);
+		
+		cout << result << endl;
 	}
     return 0;
 }
